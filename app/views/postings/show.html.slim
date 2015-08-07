@@ -1,0 +1,30 @@
+p#notice = notice
+
+p
+  strong Model:
+  = @posting.model
+p
+  strong Year:
+  = @posting.year
+p
+  strong Length:
+  = @posting.length
+p
+  strong City:
+  = @posting.city
+p
+  strong State:
+  = @posting.state
+p
+  strong Status:
+  = @posting.status
+p
+  strong Flagged:
+  = @posting.flagged
+p
+  strong Dealer:
+  = @posting.dealer
+
+= link_to 'Edit', edit_posting_path(@posting)
+'|
+= link_to 'Back', postings_path

@@ -1,0 +1,35 @@
+h1 Listing postings
+
+table
+  thead
+    tr
+      th Model
+      th Year
+      th Length
+      th City
+      th State
+      th Status
+      th Flagged
+      th Dealer
+      th
+      th
+      th
+
+  tbody
+    - @postings.each do |posting|
+      tr
+        td = posting.model
+        td = posting.year
+        td = posting.length
+        td = posting.city
+        td = posting.state
+        td = posting.status
+        td = posting.flagged
+        td = posting.dealer
+        td = link_to 'Show', posting
+        td = link_to 'Edit', edit_posting_path(posting)
+        td = link_to 'Destroy', posting, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Posting', new_posting_path
