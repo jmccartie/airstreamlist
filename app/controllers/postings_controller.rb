@@ -1,9 +1,10 @@
 class PostingsController < ApplicationController
   before_action :set_posting, only: [:show, :edit, :update, :destroy]
+  before_action :require_login, except: [:index, :show]
 
   # GET /postings
   def index
-    @postings = Posting.all
+    @postings = Posting.paginate(:page => params[:page])
   end
 
   # GET /postings/1

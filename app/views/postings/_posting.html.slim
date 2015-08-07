@@ -1,0 +1,24 @@
+.posting.panel.panel-default
+  .row
+    .col-md-4
+      = link_to posting do
+        = image_tag posting.featured_image
+    .col-md-8
+      .panel-body
+        .row
+          .col-md-12
+            h3= posting.title
+        .row
+          .col-md-12
+            p= posting.description
+            p Posted #{ local_time_ago(posting.created_at) } by #{posting.user.name}
+            p.pull-right
+              = link_to "View More", posting
+
+
+  / td = posting.model
+  / td = posting.year
+  / td = posting.length
+  / td = posting.zip_code
+  / td = posting.status
+  / td = posting.dealer?

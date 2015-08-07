@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/ffaker/ffaker.git
+  revision: ccd1324acc37c5e3ee5b03a26699b8fe9285b44a
+  specs:
+    ffaker (2.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -219,6 +225,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   compass-rails (~> 2.0.4)
+  ffaker!
   font-awesome-sass (~> 4.3.2.1)
   jquery-rails
   local_time (~> 1.0.2)

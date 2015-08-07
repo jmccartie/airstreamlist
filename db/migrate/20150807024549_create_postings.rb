@@ -7,8 +7,8 @@ class CreatePostings < ActiveRecord::Migration
       t.string :city
       t.string :state
       t.string :status
-      t.boolean :flagged
-      t.boolean :dealer
+      t.boolean :flagged, default: false, null: false
+      t.boolean :dealer, null: false
 
       t.timestamps null: false
     end

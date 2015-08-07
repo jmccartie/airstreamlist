@@ -1,30 +1,13 @@
-p#notice = notice
+= render @posting
 
-p
-  strong Model:
-  = @posting.model
-p
-  strong Year:
-  = @posting.year
-p
-  strong Length:
-  = @posting.length
-p
-  strong City:
-  = @posting.city
-p
-  strong State:
-  = @posting.state
-p
-  strong Status:
-  = @posting.status
-p
-  strong Flagged:
-  = @posting.flagged
-p
-  strong Dealer:
-  = @posting.dealer
-
-= link_to 'Edit', edit_posting_path(@posting)
-'|
-= link_to 'Back', postings_path
+.row
+  .col-md-6
+    .panel.panel-default
+      .panel-heading Contact Seller
+      .panel-body
+        = form_tag do
+          = text_area_tag :comment, "", class: "form-control"
+          = submit_tag "Send", class: "btn btn-default"
+  .col-md-6
+    .panel.panel-default
+      .panel-heading Related Items

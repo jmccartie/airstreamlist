@@ -11,6 +11,29 @@ html
 
   body
     .container
+      nav.navbar.navbar-default
+        .container-fluid
+          .navbar-header
+            button.navbar-toggle.collapsed aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" type="button"
+              span.sr-only Toggle navigation
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            = link_to "AirstreamList", root_url, class: 'navbar-brand'
+          #navbar.navbar-collapse.collapse
+            ul.nav.navbar-nav
+              li class=active?(root_path)
+                = link_to "Home", root_url
+              li
+                a href="#"  Map
+              li
+                a href="#"  Advanced Search
+            ul.nav.navbar-nav.navbar-right
+              li
+                a href="./" Sign In
+              li
+                a href="./" Sign Up
+
       = yield
 
     = javascript_include_tag 'application'
