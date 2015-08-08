@@ -1,6 +1,5 @@
 class PasswordResetsController < ApplicationController
   skip_before_filter :require_login, :redirect_inactive_org!
-  layout 'marketing'
 
   def new
   end

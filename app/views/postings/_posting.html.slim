@@ -11,7 +11,7 @@
         .row
           .col-md-12
             p= posting.description
-            p Posted #{ local_time_ago(posting.created_at) } by #{posting.user.name}
+            p Posted #{ local_time_ago(posting.created_at) } by #{posting.user.name} (#{ posting.kind })
             p.pull-right
               = link_to "View More", posting
 

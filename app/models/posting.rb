@@ -12,4 +12,8 @@ class Posting < ActiveRecord::Base
   def featured_image
     "http://placehold.it/350x250"
   end
+
+  def kind
+    dealer? ? "Dealer" : "Private party"
+  end
 end

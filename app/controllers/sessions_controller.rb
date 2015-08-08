@@ -1,6 +1,4 @@
 class SessionsController < ApplicationController
-  skip_before_filter :require_login, except: [:destroy]
-  skip_before_filter :redirect_inactive_org!
 
   def new
   end

@@ -28,11 +28,26 @@ html
                 a href="#"  Map
               li
                 a href="#"  Advanced Search
+              - if logged_in?
+                li
+                  = link_to "Post New Ad", new_posting_path
             ul.nav.navbar-nav.navbar-right
-              li
-                a href="./" Sign In
-              li
-                a href="./" Sign Up
+              - if logged_in?
+                li
+                  = link_to "Welcome #{current_user.name}!", edit_user_path(current_user)
+                li
+                  = link_to "Sign Out", signout_path, method: :delete
+              - else
+                li
+                  = link_to "Sign In", new_session_path
+                li
+                  = link_to "Sign Up", new_signup_path
+
+      - if alert || notice
+        - klass = alert.present? ? "alert-danger" : "alert-success"
+        .alert.alert-dismissable class=klass
+          button.close aria-hidden="true" data-dismiss="alert" type="button"  &times;
+          = alert || notice
 
       = yield
 
