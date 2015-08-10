@@ -3,12 +3,13 @@ require 'ffaker'
 # Create dummy users
 User.destroy_all
 5.times do
-  User.create(
+  User.create!(
     name: FFaker::Name.name,
     email: FFaker::Internet.email,
     city: FFaker::Address.city,
     state: FFaker::AddressUS.state,
-    phone: FFaker::PhoneNumber.phone_number
+    phone: FFaker::PhoneNumber.phone_number,
+    password: "please"
   )
 end
 
@@ -16,18 +17,20 @@ end
 # Create dummy postings
 Posting.destroy_all
 user_ids = User.pluck(:id)
-10.times do
-  Posting.create(
+30.times do
+  p = Posting.new(
     model: ["Flying Cloud", "International", "Safari", "Classic"].sample,
     year: (1936..Date.today.year).to_a.sample,
     length: (15..35).to_a.sample,
-    zip_code: FFaker::AddressUS.zip_code,
+    zip_code: FFaker::AddressUS.zip_code.to_i,
     state: FFaker::AddressUS.state,
     status: 'open',
     flagged: false,
-    dealer: false,
-    description: FFaker::Lorem.paragraphs.first,
+    kind: ["private", "dealer"].sample,
+    description: FFaker::Lorem.paragraphs.slice(0, 2).join("\n\n"),
     user_id: user_ids.sample
   )
+  p.title = "#{p.year} #{p.length} #{p.model}"
+  p.save!
 
 end

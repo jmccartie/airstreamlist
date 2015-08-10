@@ -1,4 +1,4 @@
-.posting.panel.panel-default
+.posting-small
   .row
     .col-md-4
       = link_to posting do
@@ -7,10 +7,9 @@
       .panel-body
         .row
           .col-md-12
-            h3= link_to posting.title, posting
+            h4= link_to posting.title, posting
         .row
           .col-md-12
-            p= simple_format posting.description
             small.text-muted Posted #{ local_time_ago(posting.created_at) } by #{posting.user.name} (#{ posting.kind })
             p.pull-right
               = link_to "View More", posting

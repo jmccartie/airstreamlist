@@ -1,14 +1,15 @@
 class PostingsController < ApplicationController
-  before_action :set_posting, only: [:show, :edit, :update, :destroy]
+  before_action :set_posting, only: [:edit, :update, :destroy]
   before_action :require_login, except: [:index, :show]
 
   # GET /postings
   def index
-    @postings = Posting.paginate(:page => params[:page])
+    @postings = Posting.includes(:user).paginate(:page => params[:page])
   end
 
   # GET /postings/1
   def show
+    @posting = Posting.find(params[:id])
   end
 
   # GET /postings/new
@@ -22,7 +23,7 @@ class PostingsController < ApplicationController
 
   # POST /postings
   def create
-    @posting = Posting.new(posting_params)
+    @posting = current_user.postings.new(posting_params)
 
     if @posting.save
       redirect_to @posting, notice: 'Posting was successfully created.'
@@ -49,11 +50,11 @@ class PostingsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_posting
-      @posting = Posting.find(params[:id])
+      @posting = current_user.postings.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
     def posting_params
-      params.require(:posting).permit(:model, :year, :length, :city, :state, :status, :flagged, :dealer)
+      params.require(:posting).permit(:title, :description, :model, :year, :length, :kind, :zip_code)
     end
 end
