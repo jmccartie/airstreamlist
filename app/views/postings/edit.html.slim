@@ -1,8 +1,9 @@
-h1 Editing posting
+.row
+  .col-md-6.col-md-push-3
+    h1 Editing posting
 
-== render 'form'
+    == render 'form'
 
-= link_to 'Show', @posting
-'|
-= link_to 'Back', postings_path
+    .pull-right
+      = link_to "Delete Posting", posting_path(@posting), method: :delete, data: { confirm: "Are you sure?" }
 

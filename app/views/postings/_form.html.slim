@@ -17,6 +17,9 @@
     = f.label :kind, "Listing Type"
     = f.select :kind, options_for_select({"Private Party" => "private", "Dealer" => "dealer"}), { prompt: true }, class: 'form-control'
   hr
+  h3 Pictures
+  = f.attachinary_file_field :photos
+  hr
   h3 Optional
   p This information will help people find your ad easier!
   .row
@@ -31,7 +34,7 @@
   .form-group
     = f.label :model
     = f.text_field :model, class: 'form-control'
-  .actions = f.submit "Create", class: 'btn btn-primary'
+  .actions = f.submit "Save", class: 'btn btn-primary'
 
 
 

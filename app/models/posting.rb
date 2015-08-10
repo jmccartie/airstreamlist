@@ -1,5 +1,7 @@
 class Posting < ActiveRecord::Base
   belongs_to :user
+  has_attachments :photos, maximum: 10
+
   default_scope { order("created_at DESC") }
 
   validates_inclusion_of :year, in: (1936..Date.today.year+1).map(&:to_s)
@@ -15,6 +17,7 @@ class Posting < ActiveRecord::Base
     "#{id}-#{title.parameterize}"
   end
 
+  # Temp. Relace with Elasticsearch
   def related
     Posting.order("RANDOM()").limit(4)
   end

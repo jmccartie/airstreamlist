@@ -1,4 +1,15 @@
+- if current_user.id == @posting.user_id
+  .pull-right
+    = link_to "Edit Post", edit_posting_path(@posting)
+
 = render @posting
+
+.row
+  .col-md-12
+    #links.well
+      - @posting.photos.each do |photo|
+        = link_to cl_image_path(photo.path) do
+          = cl_image_tag(photo.path, { size: '125x125', crop: :fit, data: { gallery: "" } } )
 
 .row
   .col-md-6

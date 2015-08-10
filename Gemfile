@@ -19,6 +19,10 @@ gem 'compass-rails', '~> 2.0.4'
 gem 'will_paginate', '~> 3.0.7'
 gem 'local_time', '~> 1.0.2'
 
+# Images
+gem 'cloudinary', '~> 1.0.24'
+gem 'attachinary', '~> 1.3.0'
+
 
 group :development, :test do
   gem 'byebug'
@@ -26,5 +30,6 @@ group :development, :test do
   gem 'spring'
   gem 'quiet_assets'
   gem 'ffaker', github: 'ffaker/ffaker'
+  gem 'dotenv-rails'
 end
 
