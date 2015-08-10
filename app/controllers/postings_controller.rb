@@ -21,6 +21,15 @@ class PostingsController < ApplicationController
   def edit
   end
 
+  # POST /postings/1/contact
+  def contact
+    @posting = Posting.find(params[:posting_id])
+    if params[:message].present?
+      UserMailer.contact(@posting.id, current_user.id, params[:message]).deliver_later
+    end
+    redirect_to @posting, notice: "Your message has been sent"
+  end
+
   # POST /postings
   def create
     @posting = current_user.postings.new(posting_params)

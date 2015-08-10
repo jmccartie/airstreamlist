@@ -3,7 +3,10 @@ Rails.application.routes.draw do
 
   mount Attachinary::Engine => "/attachinary"
 
-  resources :postings
+  resources :postings do
+    post :contact
+  end
+
   resources :users
 
   # Users

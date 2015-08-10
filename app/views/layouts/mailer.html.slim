@@ -1,0 +1,45 @@
+doctype Strict
+html xmlns="http://www.w3.org/1999/xhtml"
+  head
+    meta content=("text/html; charset=utf-8") http-equiv="Content-Type" /
+    meta content="width=device-width" name="viewport" /
+    = render "layouts/mailer_ink_css"
+  body data-force-encoding="✓"
+    table.body
+      tr
+        td.center align="center" valign="top"
+          center
+            table.row.header
+              tr
+                td.center align="center"
+                  center
+                    table.container
+                      tr
+                        td.wrapper.last
+                          table.twelve.columns
+                            tr
+                              td.six.sub-columns
+                                h1 AirstreamList
+                              td.three.sub-columns
+                                | &nbsp;
+                              td.three.sub-columns.last style=("text-align:right; vertical-align:middle;")
+                                table.button.small-button.radius
+                                  tr
+                                    td= link_to "Sign In", new_session_url
+                              td.expander
+            table.container
+              tr
+                td
+                  = yield
+
+                  hr
+                  table.row
+                    tr
+                      td.wrapper.last
+                        table.twelve.columns
+                          tr
+                            td
+                              p
+                                span.muted Sent from AirstreamList Livingston, TX 77399
+                            td.expander
+                  /! container end below

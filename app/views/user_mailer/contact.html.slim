@@ -1,0 +1,25 @@
+table.row
+  tr
+    td.wrapper.last
+      table.twelve.columns
+        tr
+          td
+            h3 Hi #{ @user.name },
+            p.lead You've got a new message from #{@from.name} about your posting "#{@posting.title}"
+          td.expander
+
+blockquote
+  = @message
+
+
+table.row
+  tr
+    td.wrapper.last
+      table.twelve.columns
+        p From: #{ @from.name} (#{ @from.email })
+        p Posting: #{link_to posting_url(@posting), posting_url(@posting)}
+
+
+hr
+  p WATCH OUT FOR SCAMS! If the offer is to good to be true, then it probably is. If you believe this message is spam, please <a href="mailto:airstreamlist@eruva.com?subject=Spam from #{@from.email}">Contact Us</a>.
+  p AirstreamList.com and their parent company Eruva are not responsible for any transactions.
