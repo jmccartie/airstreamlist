@@ -25,6 +25,7 @@ gem 'local_time', '~> 1.0.2'
 # Images
 gem 'cloudinary', '~> 1.0.24'
 gem 'attachinary', '~> 1.3.0'
+gem 'responders', '~> 2.0' # This is needed for the old attachniary version
 
 
 group :development, :test do
