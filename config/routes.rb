@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   get 'search' => 'search#index', as: 'search'
 
@@ -19,6 +21,11 @@ Rails.application.routes.draw do
   get "signin" => "sessions#new", as: "new_session"
   post "signin" => "sessions#create", as: "session"
   delete "signout" => "sessions#destroy", as: "signout"
+
+    # Super Admin
+  constraints(AuthSuperAdmin) do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 
   root 'postings#index'
 end
