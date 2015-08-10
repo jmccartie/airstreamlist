@@ -7,6 +7,7 @@ class Posting < ActiveRecord::Base
   validates_presence_of :description, :title
   validates_inclusion_of :kind, in: ["dealer", "private"]
   validates_inclusion_of :zip_code, in: (00501..99950), message: "is not valid"
+  validates_inclusion_of :status, in: ['open', 'archived', 'pending']
 
   # TODO: turn zip code into city/state info
   # TODO: "status" gets default value
@@ -16,7 +17,7 @@ class Posting < ActiveRecord::Base
   end
 
   def related
-    Posting.order("RANDOM()").limit(4)
+    Search.new({q: self.title}).results
   end
 
 end

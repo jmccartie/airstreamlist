@@ -32,7 +32,7 @@ class PostingsController < ApplicationController
 
   # POST /postings
   def create
-    @posting = current_user.postings.new(posting_params)
+    @posting = current_user.postings.new(posting_params.merge(status: 'open'))
 
     if @posting.save
       redirect_to @posting, notice: 'Posting was successfully created.'
@@ -64,6 +64,10 @@ class PostingsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def posting_params
-      params.require(:posting).permit(:title, :description, :model, :year, :length, :kind, :zip_code, photos: [])
+      params.require(:posting)
+        .permit(:title, :description, :price, :model, :year, :length, :kind, :zip_code, photos: [])
+        .merge(price: params[:posting][:price].gsub(",", ""))
+
     end
+
 end

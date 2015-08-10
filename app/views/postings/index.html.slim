@@ -1,3 +1,9 @@
+- if request.path == root_path
+  .jumbotron
+    h1 Welcome to AirstreamList!
+    p We're dedicated to creating the best online experience for finding and selling Airstreams. We're currently in our Beta stage, so all listings are completely free! No ads, no gimmicks.
+    p If you like what you see or have any feedback, <a href="mailto:airstreamlist@eruva.com?subject=Feedback">let us know!</a>
+
 - if params[:page] && params[:page].to_i > 1
   p Page #{params[:page]} of #{@postings.total_pages}
 = render @postings

@@ -24,15 +24,10 @@ gem 'local_time', '~> 1.0.2'
 gem 'cloudinary', '~> 1.0.24'
 gem 'attachinary', '~> 1.3.0'
 
-# Search
-gem 'elasticsearch-model'
-gem 'elasticsearch-rails'
-gem 'bonsai-elasticsearch-rails'
-
 
 group :development, :test do
-  gem 'byebug'
-  gem 'web-console', '~> 2.0'
+  gem 'better_errors'                   # Developer friendly error pages with useful env details
+  gem 'binding_of_caller'               # REPL inside better_errors pages
   gem 'spring'
   gem 'quiet_assets'
   gem 'ffaker', github: 'ffaker/ffaker'
