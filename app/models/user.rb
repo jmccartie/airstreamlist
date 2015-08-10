@@ -8,4 +8,5 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
   validates :email, format: { with: /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/ }
   validates_length_of :password, minimum: 6
+  validates_confirmation_of :password, message: "should match password", if: "password.present?"
 end

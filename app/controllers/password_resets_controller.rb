@@ -1,5 +1,5 @@
 class PasswordResetsController < ApplicationController
-  skip_before_filter :require_login, :redirect_inactive_org!
+  skip_before_filter :require_login
 
   def new
   end
@@ -45,7 +45,7 @@ class PasswordResetsController < ApplicationController
       auto_login(@user)
       redirect_to(root_path, :notice => 'Password was successfully updated.')
     else
-      flash.now[:alert] = @user.errors.full_messages
+      flash.now[:alert] = @user.errors.full_messages.first
       render action: "edit"
     end
   end

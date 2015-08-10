@@ -6,12 +6,13 @@ gem 'pg'
 gem 'sorcery', '~> 0.9.1'
 gem 'puma', '~> 2.12.3'
 gem 'rollbar', '~> 2.1.1'
-gem 'rails_12factor', '~> 0.0.3'
+
 gem 'newrelic_rpm'
 
 # Sidekiq
 gem 'sidekiq', '~> 3.4.2'
 gem 'sinatra', :require => nil
+gem 'sidekiq-failures', '~> 0.4.5'
 
 gem 'sass-rails', '5.0.1'
 gem 'uglifier', '>= 1.3.0'
@@ -42,3 +43,7 @@ group :development, :test do
   gem 'dotenv-rails'
 end
 
+
+group :productio do
+  gem 'rails_12factor', '~> 0.0.3'
+end

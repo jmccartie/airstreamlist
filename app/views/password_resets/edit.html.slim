@@ -1,0 +1,13 @@
+.row
+  .col-md-6.col-md-offset-3
+    = form_for @user, :url => password_reset_path(@user), :html => {:method => :put} do |f|
+      = hidden_field_tag :token, @token
+      h3 Choose your new password
+      .form-group
+        = f.label :password, "Password"
+        = f.password_field :password, class: 'form-control'
+      .form-group
+        = f.label :password_confirmation, "Password Confirmation"
+        = f.password_field :password_confirmation, class: "form-control"
+      .form-group
+        = submit_tag "Save", { class: "btn btn-primary" }
