@@ -4,7 +4,7 @@ class PostingsController < ApplicationController
 
   # GET /postings
   def index
-    @postings = Posting.includes(:user).paginate(:page => params[:page])
+    @postings = Posting.includes(:user).order("created_at DESC").paginate(:page => params[:page])
   end
 
   # GET /postings/1

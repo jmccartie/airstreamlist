@@ -7,9 +7,9 @@
 .row
   .col-md-12
     #links.well
-      - @posting.photos.each do |photo|
-        = link_to cl_image_path(photo.path) do
-          = cl_image_tag(photo.path, { size: '125x125', crop: :fit, data: { gallery: "" } } )
+      - @posting.photos.each_with_index do |photo, i|
+        = link_to cl_image_path(photo.path), data: { toggle: "lightbox", gallery: "multiimages", title: "#{@posting.title} - Photo #{i+1}" } do
+          = cl_image_tag(photo.path, { size: '125x125', crop: :fit } )
 
 .row
   .col-md-6

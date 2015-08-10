@@ -19,19 +19,18 @@ html
               span.icon-bar
               span.icon-bar
               span.icon-bar
-            = link_to "AirstreamList", root_url, class: 'navbar-brand'
+            = link_to "AirstreamList <sup>BETA</sup>".html_safe, root_url, class: 'navbar-brand'
           #navbar.navbar-collapse.collapse
             ul.nav.navbar-nav
               li class=active?(root_path)
                 = link_to "Home", root_url
-              li
-                a href="#"  Map
-              li
-                a href="#"  Advanced Search
-              - if logged_in?
-                li
-                  = link_to "Post New Ad", new_posting_path
+              = form_tag search_path, method: :get, class: 'navbar-form navbar-left' do
+                .form-group
+                  = text_field_tag 'q', params[:q], class: 'form-control', placeholder: 'Search'
+                = submit_tag 'Search', class: 'btn btn-default'
             ul.nav.navbar-nav.navbar-right
+              li
+                  = link_to "Post New Ad", new_posting_path
               - if logged_in?
                 li
                   = link_to "Welcome #{current_user.name}!", edit_user_path(current_user)

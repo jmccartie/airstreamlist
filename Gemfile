@@ -17,11 +17,17 @@ gem 'font-awesome-sass', '~> 4.3.2.1'
 gem 'compass-rails', '~> 2.0.4'
 
 gem 'will_paginate', '~> 3.0.7'
+gem 'will_paginate-bootstrap'
 gem 'local_time', '~> 1.0.2'
 
 # Images
 gem 'cloudinary', '~> 1.0.24'
 gem 'attachinary', '~> 1.3.0'
+
+# Search
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
+gem 'bonsai-elasticsearch-rails'
 
 
 group :development, :test do

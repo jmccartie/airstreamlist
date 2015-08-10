@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'search' => 'search#index', as: 'search'
+
   mount Attachinary::Engine => "/attachinary"
 
   resources :postings
