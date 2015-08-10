@@ -1,4 +1,13 @@
 GIT
+  remote: git://github.com/NoamB/sorcery.git
+  revision: f397f2e2895ee9fa758173b887a10f07b47effe2
+  specs:
+    sorcery (0.9.1)
+      bcrypt (~> 3.1)
+      oauth (~> 0.4, >= 0.4.4)
+      oauth2 (>= 0.8.0)
+
+GIT
   remote: git://github.com/ffaker/ffaker.git
   revision: ccd1324acc37c5e3ee5b03a26699b8fe9285b44a
   specs:
@@ -223,10 +232,6 @@ GEM
       activesupport (>= 3.1, < 5.0)
       railties (>= 3.1, < 5.0)
       slim (~> 3.0)
-    sorcery (0.9.1)
-      bcrypt (~> 3.1)
-      oauth (~> 0.4, >= 0.4.4)
-      oauth2 (>= 0.8.0)
     spring (1.3.6)
     sprockets (2.12.4)
       hike (~> 1.2)
@@ -286,7 +291,7 @@ DEPENDENCIES
   sidekiq-failures (~> 0.4.5)
   sinatra
   slim-rails (~> 3.0.1)
-  sorcery (~> 0.9.1)
+  sorcery!
   spring
   turbolinks
   uglifier (>= 1.3.0)

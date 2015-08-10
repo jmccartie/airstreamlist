@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.2.3'
 gem 'pg'
-gem 'sorcery', '~> 0.9.1'
+gem 'sorcery', github: 'NoamB/sorcery'
 gem 'puma', '~> 2.12.3'
 gem 'rollbar', '~> 2.1.1'
 
@@ -44,6 +44,6 @@ group :development, :test do
 end
 
 
-group :productio do
+group :production do
   gem 'rails_12factor', '~> 0.0.3'
 end
