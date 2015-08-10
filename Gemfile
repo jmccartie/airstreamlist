@@ -6,6 +6,7 @@ gem 'pg'
 gem 'sorcery', '~> 0.9.1'
 gem 'puma', '~> 2.12.3'
 gem 'sidekiq', '~> 3.4.2'
+gem 'rollbar', '~> 2.1.1'
 
 gem 'sass-rails', '5.0.1'
 gem 'uglifier', '>= 1.3.0'
