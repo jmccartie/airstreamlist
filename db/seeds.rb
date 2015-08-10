@@ -28,7 +28,8 @@ user_ids = User.pluck(:id)
     flagged: false,
     kind: ["private", "dealer"].sample,
     description: FFaker::Lorem.paragraphs.slice(0, 2).join("\n\n"),
-    user_id: user_ids.sample
+    user_id: user_ids.sample,
+    price: (10_000..60_000).to_a.sample
   )
   p.title = "#{p.year} #{p.length} #{p.model}"
   p.save!

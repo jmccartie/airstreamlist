@@ -1,24 +1,52 @@
+- if params[:q].present?
+  .row
+    .col-md-12
+      h1 Results for "#{params[:q]}"
 .row
   .col-md-9
-    = render @search.results
+    - if @search.results.any?
+      = render @search.results
+    - else
+      p No results found
 
   .col-md-3
     #advanced-search
       = form_tag search_path, method: :get do
         .well
           .form-group
+            = label_tag "Keywords"
+            = text_field_tag "q", params[:q], class: 'form-control'
+          .form-group
             = label_tag "Model"
             = text_field_tag "model", params[:model], class: 'form-control'
           .form-group
             = label_tag "Length"
-            = text_field_tag "length", params[:length], class: 'form-control'
-          .form-group
-            = label_tag "Distance"
-            = text_field_tag "distance", params[:distance], class: 'form-control'
+            .row
+              .col-md-5
+                = text_field_tag "length_start", params[:length_start], class: 'form-control'
+              .col-md-2 to
+              .col-md-5
+                = text_field_tag "length_end", params[:length_end], class: 'form-control'
+          / .form-group
+          /   = label_tag "Distance"
+          /   = text_field_tag "distance", params[:distance], class: 'form-control'
           .form-group
             = label_tag "Year"
-            = text_field_tag "year", params[:year], class: 'form-control'
+            .row
+              .col-md-5
+                = text_field_tag "year_start", params[:year_start], class: 'form-control'
+              .col-md-2 to
+              .col-md-5
+                = text_field_tag "year_end", params[:year_end], class: 'form-control'
           .form-group
-            = label_tag "Kind"
-            = text_field_tag "kind", params[:kind], class: 'form-control'
+            = label_tag "Type of Sale"
+            = select_tag "kind", options_for_select({"Dealer" => "dealer", "Private Party" => "private"}, selected: params[:kind]), include_blank: true, class: 'form-control'
+          .form-group
+            = label_tag "Sort By"
+            .row
+              .col-md-6
+                = select_tag "sort_field", options_for_select(["Price", "Year"], selected: params[:sort_field]), include_blank: true, class: 'form-control'
+              .col-md-6
+                = select_tag "sort_direction", options_for_select({"Low to high" => "ASC", "High to low" => "DESC"}, selected: params[:sort_direction]), include_blank: true, class: 'form-control'
+
           = submit_tag "Search", class: 'btn btn-primary'

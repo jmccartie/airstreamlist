@@ -24,9 +24,11 @@ html
             ul.nav.navbar-nav
               li class=active?(root_path)
                 = link_to "Home", root_url
+              li class=active?(search_path)
+                = link_to "Advanced Search", search_path
               = form_tag search_path, method: :get, class: 'navbar-form navbar-left' do
                 .form-group
-                  = text_field_tag 'q', params[:q], class: 'form-control', placeholder: 'Search'
+                  = text_field_tag 'q', params[:q], class: 'form-control', placeholder: 'Quick Search'
                 = submit_tag 'Search', class: 'btn btn-default'
             ul.nav.navbar-nav.navbar-right
               li

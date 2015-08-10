@@ -1,4 +1,4 @@
-- if current_user.id == @posting.user_id
+- if logged_in? && current_user.id == @posting.user_id
   .pull-right
     = link_to "Edit Post", edit_posting_path(@posting)
 
