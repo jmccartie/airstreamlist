@@ -7,7 +7,7 @@ class UserMailerPreview < ActionMailer::Preview
   end
 
   def contact
-    UserMailer.contact(Posting.last.id, User.first.id, FFaker::Lorem.paragraphs.first)
+    UserMailer.contact(Listing.last.id, User.first.id, FFaker::Lorem.paragraphs.first)
   end
 
 end

@@ -1,5 +1,5 @@
-class SwapOutZipCodeOnPostings < ActiveRecord::Migration
+class SwapOutZipCodeOnListings < ActiveRecord::Migration
   def change
-    add_column :postings, :zip_code, :integer
+    add_column :listings, :zip_code, :integer
   end
 end

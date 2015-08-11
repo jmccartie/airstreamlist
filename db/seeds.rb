@@ -14,11 +14,11 @@ User.destroy_all
 end
 
 
-# Create dummy postings
-Posting.destroy_all
+# Create dummy listings
+Listing.destroy_all
 user_ids = User.pluck(:id)
 30.times do
-  p = Posting.new(
+  p = Listing.new(
     model: ["Flying Cloud", "International", "Safari", "Classic"].sample,
     year: (1936..Date.today.year).to_a.sample,
     length: (15..35).to_a.sample,

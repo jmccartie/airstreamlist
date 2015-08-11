@@ -23,9 +23,9 @@ class Search
     query << " AND kind = '#{params[:kind]}'" if params[:kind].present?
 
     ActiveRecord::Base::sanitize(query)
-    items = Posting.where(query)
+    items = Listing.where(query)
     if params[:sort_field].present? and params[:sort_direction].present?
-      if Posting.column_names.include?(params[:sort_field].downcase)
+      if Listing.column_names.include?(params[:sort_field].downcase)
         items = items.order("#{params[:sort_field].downcase} #{params[:sort_direction]}")
       end
     end

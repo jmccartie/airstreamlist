@@ -24,8 +24,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    if current_user.update(posting_params)
-      redirect_to root_url, notice: 'Posting was successfully updated.'
+    if current_user.update(listing_params)
+      redirect_to root_url, notice: 'Listing was successfully updated.'
     else
       render :edit
     end

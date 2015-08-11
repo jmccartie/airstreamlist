@@ -1,2 +1,2 @@
-module PostingsHelper
+module ListingsHelper
 end

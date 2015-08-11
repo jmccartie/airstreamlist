@@ -1,4 +1,4 @@
-class Posting < ActiveRecord::Base
+class Listing < ActiveRecord::Base
   belongs_to :user
   has_attachments :photos, maximum: 15
 

@@ -1,6 +1,6 @@
-class CreatePostings < ActiveRecord::Migration
+class CreateListings < ActiveRecord::Migration
   def change
-    create_table :postings do |t|
+    create_table :listings do |t|
       t.string :model
       t.string :year
       t.string :length

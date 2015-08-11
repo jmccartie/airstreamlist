@@ -1,14 +1,14 @@
-- if logged_in? && current_user.id == @posting.user_id
+- if logged_in? && current_user.id == @listing.user_id
   .pull-right
-    = link_to "Edit Post", edit_posting_path(@posting)
+    = link_to "Edit Post", edit_listing_path(@listing)
 
-= render @posting
+= render @listing
 
 .row
   .col-md-12
     #links.well
-      - @posting.photos.each_with_index do |photo, i|
-        = link_to cl_image_path(photo.path), data: { toggle: "lightbox", gallery: "multiimages", title: "#{@posting.title} - Photo #{i+1}" } do
+      - @listing.photos.each_with_index do |photo, i|
+        = link_to cl_image_path(photo.path), data: { toggle: "lightbox", gallery: "multiimages", title: "#{@listing.title} - Photo #{i+1}" } do
           = cl_image_tag(photo.path, { size: '125x125', crop: :fit } )
 
 .row
@@ -17,10 +17,10 @@
       .panel-heading Contact Seller
       .panel-body
         - if logged_in?
-          p To: #{@posting.user.name}
+          p To: #{@listing.user.name}
           p From: #{current_user.name}
 
-          = form_tag posting_contact_path(@posting.id) do
+          = form_tag listing_contact_path(@listing.id) do
             .form-group
               = text_area_tag :message, "", rows: '5', class: "form-control"
             .form-group
@@ -32,5 +32,5 @@
     .panel.panel-default
       .panel-heading Related Items
       .panel-body
-        - @posting.related.each do |posting|
-          = render partial: "posting_small", locals: { posting: posting }
+        - @listing.related.each do |listing|
+          = render partial: "listing_small", locals: { listing: listing }

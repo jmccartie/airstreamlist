@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
 
-  has_many :postings
+  has_many :listings
 
   validates_presence_of :password, :on => :create
   validates_presence_of :email, :name

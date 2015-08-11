@@ -1,0 +1,9 @@
+.row
+  .col-md-6.col-md-push-3
+    h1 Editing listing
+
+    == render 'form'
+
+    .pull-right
+      = link_to "Delete Listing", listing_path(@listing), method: :delete, data: { confirm: "Are you sure?" }
+

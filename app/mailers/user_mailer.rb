@@ -7,13 +7,13 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: "[AirstreamList] Reset Your Password")
   end
 
-  def contact(posting_id, from_id, message)
-    @posting = Posting.find(posting_id)
-    @user = @posting.user
+  def contact(listing_id, from_id, message)
+    @listing = Listing.find(listing_id)
+    @user = @listing.user
     @from = User.find(from_id)
     @message = message
 
-    mail(to: @user.email, subject: '[AirstreamList] New message about your posting', reply_to: @from.email)
+    mail(to: @user.email, subject: '[AirstreamList] New message about your listing', reply_to: @from.email)
   end
 
 end

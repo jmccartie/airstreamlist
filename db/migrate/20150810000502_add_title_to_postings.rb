@@ -1,5 +1,5 @@
-class AddTitleToPostings < ActiveRecord::Migration
+class AddTitleToListings < ActiveRecord::Migration
   def change
-    add_column :postings, :title, :string, null: false
+    add_column :listings, :title, :string, null: false
   end
 end

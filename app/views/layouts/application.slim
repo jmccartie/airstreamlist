@@ -44,7 +44,7 @@ html
                 = submit_tag 'Search', class: 'btn btn-default'
             ul.nav.navbar-nav.navbar-right
               li
-                  = link_to "Create New Listing", new_posting_path
+                  = link_to "Create New Listing", new_listing_path
               - if logged_in?
                 li
                   = link_to "Welcome #{current_user.name}!", edit_user_path(current_user)

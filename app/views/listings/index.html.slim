@@ -5,8 +5,8 @@
     p If you like what you see or have any feedback, <a href="mailto:airstreamlist@eruva.com?subject=Feedback">let us know!</a>
 
 - if params[:page] && params[:page].to_i > 1
-  p Page #{params[:page]} of #{@postings.total_pages}
-= render @postings
+  p Page #{params[:page]} of #{@listings.total_pages}
+= render @listings
 
 .text-center
-  = will_paginate @postings, renderer: BootstrapPagination::Rails
+  = will_paginate @listings, renderer: BootstrapPagination::Rails

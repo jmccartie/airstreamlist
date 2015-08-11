@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   mount Attachinary::Engine => "/attachinary"
 
-  resources :postings do
+  resources :listings do
     post :contact
   end
 
@@ -27,5 +27,5 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
   end
 
-  root 'postings#index'
+  root 'listings#index'
 end

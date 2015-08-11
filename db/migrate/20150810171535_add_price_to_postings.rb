@@ -1,5 +1,5 @@
-class AddPriceToPostings < ActiveRecord::Migration
+class AddPriceToListings < ActiveRecord::Migration
   def change
-    add_column :postings, :price, :integer, null: false
+    add_column :listings, :price, :integer, null: false
   end
 end

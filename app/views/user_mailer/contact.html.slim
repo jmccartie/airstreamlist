@@ -5,7 +5,7 @@ table.row
         tr
           td
             h3 Hi #{ @user.name },
-            p.lead You've got a new message from #{@from.name} about your posting "#{@posting.title}"
+            p.lead You've got a new message from #{@from.name} about your listing "#{@listing.title}"
           td.expander
 
 blockquote
@@ -17,7 +17,7 @@ table.row
     td.wrapper.last
       table.twelve.columns
         p From: #{ @from.name} (#{ @from.email })
-        p Posting: #{link_to posting_url(@posting), posting_url(@posting)}
+        p Listing: #{link_to listing_url(@listing), listing_url(@listing)}
 
 
 hr
