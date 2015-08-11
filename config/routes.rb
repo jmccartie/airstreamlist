@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :listings do
     post :contact
+    get :my, on: :collection
   end
 
   resources :users

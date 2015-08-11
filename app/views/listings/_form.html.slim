@@ -7,7 +7,8 @@
   .row
     .col-md-6
       .panel.panel-default
-        .panel-heading Required Info
+        .panel-heading
+          h3 Required Info
         .panel-body
           .form-group
             = f.label :title
@@ -30,12 +31,14 @@
 
     .col-md-6
       .panel.panel-default
-        .panel-heading Photos
+        .panel-heading
+          h3 Photos
         .panel-body
           p Upload up to 15 pictures
           = f.attachinary_file_field :photos
       .panel.panel-default
-        .panel-heading Optional
+        .panel-heading
+          h3 Optional
         .panel-body
           p This information will help people find your ad easier!
           .row

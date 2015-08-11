@@ -36,8 +36,6 @@ html
             ul.nav.navbar-nav
               li class=active?(root_path)
                 = link_to "Home", root_url
-              li class=active?(search_path)
-                = link_to "Advanced Search", search_path
               = form_tag search_path, method: :get, class: 'navbar-form navbar-left' do
                 .form-group
                   = text_field_tag 'q', params[:q], class: 'form-control', placeholder: 'Quick Search'
@@ -46,8 +44,15 @@ html
               li
                   = link_to "Create New Listing", new_listing_path
               - if logged_in?
-                li
-                  = link_to "Welcome #{current_user.name}!", edit_user_path(current_user)
+                li.dropdown
+                  a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+                    | Welcome #{current_user.name}!
+                    span.caret
+                  ul.dropdown-menu
+                    li= link_to "Edit Profile", edit_user_path(current_user)
+                    li.divider role="separator"
+                    li= link_to "My Listings", my_listings_path
+                    li= link_to "Saved Searches"
                 li
                   = link_to "Sign Out", signout_path, method: :delete
               - else

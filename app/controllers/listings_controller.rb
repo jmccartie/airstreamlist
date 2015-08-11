@@ -21,6 +21,10 @@ class ListingsController < ApplicationController
   def edit
   end
 
+  def my
+    @listings = current_user.listings
+  end
+
   # POST /listings/1/contact
   def contact
     @listing = Listing.find(params[:listing_id])

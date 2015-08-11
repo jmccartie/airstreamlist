@@ -1,0 +1,20 @@
+h1 My Listings
+
+table.table
+  thead
+    tr
+      td Status
+      td Title
+      td Created At
+      td Actions
+  tbody
+    - @listings.each do |listing|
+      tr
+        td= listing.status.capitalize
+        td= link_to listing.title, listing
+        td= local_time(listing.created_at)
+        td
+          = link_to "Edit", edit_listing_path(listing)
+          .divider-vertical
+          = link_to "Delete", listing_path(listing), method: :delete, data: { confirm: "Are you sure?" }
+
