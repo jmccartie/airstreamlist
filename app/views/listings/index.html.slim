@@ -6,7 +6,7 @@
 
 - if params[:page] && params[:page].to_i > 1
   p Page #{params[:page]} of #{@listings.total_pages}
-= render @listings
+#listings= render @listings
 
 .text-center
   = will_paginate @listings, renderer: BootstrapPagination::Rails

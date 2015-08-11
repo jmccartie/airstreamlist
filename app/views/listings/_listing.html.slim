@@ -5,7 +5,7 @@
     .row
       .col-md-4
         = link_to listing do
-          = cl_image_tag(listing.photos.first.try(:path) || "default", { size: '350x250', crop: :fit, default_image: 'default_qwtxhe.png' })
+          = cl_image_tag(listing.photos.first.try(:path) || "default", { :width => 350, :height => 250, :crop => :fill, default_image: 'default_qwtxhe.png' })
       .col-md-8
         .panel-body
           .row
@@ -16,7 +16,9 @@
                   small= number_to_currency(listing.price, precision: 0)
           .row
             .col-md-12
-              p= simple_format truncate(listing.description, length: 400, separator: ". ")
+              .description
+                - text = params[:action] == 'show' ? listing.description : truncate(listing.description, length: 200, separator: '. ')
+                = simple_format text
 
               small.text-muted Posted #{ local_time_ago(listing.created_at) } by #{listing.user.name}
 

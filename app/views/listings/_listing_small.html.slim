@@ -3,7 +3,7 @@
     .row
       .col-md-4
         = link_to listing do
-          = cl_image_tag(listing.photos.first.try(:path) || 'default', { size: '150x150', crop: :fit, default_image: 'default_qwtxhe.png' })
+          = cl_image_tag(listing.photos.first.try(:path) || 'default', { widht: 150, height: 150, crop: :fit, default_image: 'default_qwtxhe.png' })
       .col-md-8
         .panel-body
           .row
