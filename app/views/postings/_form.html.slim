@@ -4,56 +4,50 @@
       ul
         - @posting.errors.full_messages.each do |message|
           li = message
-  .form-group
-    = f.label :title
-    = f.text_field :title, class: 'form-control'
-  .form-group
-    = f.label :price, "Price"
-    .input-group
-      .input-group-addon $
-      = f.text_field :price, class: 'form-control'
-      .input-group-addon .00
-  .form-group
-    = f.label :description
-    = f.text_area :description, class: 'form-control', rows: '7'
-  .form-group
-    = f.label :zip_code
-    = f.number_field :zip_code, class: 'form-control'
-  .form-group
-    = f.label :kind, "Listing Type"
-    = f.select :kind, options_for_select({"Private Party" => "private", "Dealer" => "dealer"}), { prompt: true }, class: 'form-control'
-  hr
-  h3 Pictures
-  = f.attachinary_file_field :photos
-  hr
-  h3 Optional
-  p This information will help people find your ad easier!
   .row
     .col-md-6
-      .form-group
-        = f.label :year
-        = f.select :year, (1936..Time.now.year+1), {}, class: "form-control"
+      .panel.panel-default
+        .panel-heading Required Info
+        .panel-body
+          .form-group
+            = f.label :title
+            = f.text_field :title, class: 'form-control'
+          .form-group
+            = f.label :price, "Price"
+            .input-group
+              .input-group-addon $
+              = f.text_field :price, class: 'form-control'
+              .input-group-addon .00
+          .form-group
+            = f.label :description
+            = f.text_area :description, class: 'form-control', rows: '7'
+          .form-group
+            = f.label :zip_code
+            = f.number_field :zip_code, class: 'form-control'
+          .form-group
+            = f.label :kind, "Listing Type"
+            = f.select :kind, options_for_select({"Private Party" => "private", "Dealer" => "dealer"}), { prompt: true }, class: 'form-control'
+
     .col-md-6
-      .form-group
-        = f.label :length
-        = f.text_field :length, class: 'form-control'
-  .form-group
-    = f.label :model
-    = f.text_field :model, class: 'form-control'
-  .actions = f.submit "Save", class: 'btn btn-primary'
-
-
-
-    / t.string   "model"
-    / t.string   "year"
-    / t.string   "length"
-    / t.string   "status"
-    / t.boolean  "flagged",     default: false, null: false
-    / t.boolean  "dealer",                      null: false
-    / t.datetime "created_at",                  null: false
-    / t.datetime "updated_at",                  null: false
-    / t.text     "description"
-    / t.string   "city"
-    / t.string   "state"
-    / t.integer  "zip_code"
-    / t.integer  "user_id",
+      .panel.panel-default
+        .panel-heading Photos
+        .panel-body
+          p Upload up to 15 pictures
+          = f.attachinary_file_field :photos
+      .panel.panel-default
+        .panel-heading Optional
+        .panel-body
+          p This information will help people find your ad easier!
+          .row
+            .col-md-6
+              .form-group
+                = f.label :year
+                = f.select :year, (1936..Time.now.year+1), { include_blank: true }, class: "form-control"
+            .col-md-6
+              .form-group
+                = f.label :length
+                = f.text_field :length, class: 'form-control'
+          .form-group
+            = f.label :model
+            = f.text_field :model, class: 'form-control'
+          .actions = f.submit "Save", class: 'btn btn-primary'

@@ -1,6 +1,6 @@
 class Posting < ActiveRecord::Base
   belongs_to :user
-  has_attachments :photos, maximum: 10
+  has_attachments :photos, maximum: 15
 
   validates_inclusion_of :year, in: (1936..Date.today.year+1)
   validates_numericality_of :zip_code, :price
