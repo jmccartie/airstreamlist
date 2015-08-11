@@ -5,8 +5,8 @@ gem 'rails', '4.2.3'
 gem 'pg'
 gem 'sorcery', github: 'NoamB/sorcery'
 gem 'puma', '~> 2.12.3'
-gem 'rollbar', '~> 2.1.1'
 
+gem 'rollbar', '~> 2.1.1'
 gem 'newrelic_rpm'
 
 # Sidekiq
@@ -27,6 +27,7 @@ gem 'compass-rails', '~> 2.0.4'
 gem 'will_paginate', '~> 3.0.7'
 gem 'will_paginate-bootstrap'
 gem 'local_time', '~> 1.0.2'
+gem 'geocoder'
 
 # Images
 gem 'cloudinary', '~> 1.0.24'

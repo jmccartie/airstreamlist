@@ -3,14 +3,15 @@ class Listing < ActiveRecord::Base
   has_attachments :photos, maximum: 15
 
   validates_inclusion_of :year, in: (1936..Date.today.year+1)
-  validates_numericality_of :zip_code, :price
-  validates_presence_of :description, :title
+  validates_numericality_of :price
+  validates_presence_of :description, :title, :city, :state
   validates_inclusion_of :kind, in: ["dealer", "private"]
-  validates_inclusion_of :zip_code, in: (00501..99950), message: "is not valid"
   validates_inclusion_of :status, in: ['open', 'archived', 'pending']
 
-  # TODO: turn zip code into city/state info
-  # TODO: "status" gets default value
+  geocoded_by :address
+
+  after_validation :geocode, :reverse_geocode
+  before_validation :set_status
 
   def to_param
     "#{id}-#{title.parameterize}"
@@ -19,5 +20,14 @@ class Listing < ActiveRecord::Base
   def related
     Search.new({q: self.title}).results
   end
+
+  def address
+    [city, state].compact.join(', ')
+  end
+
+  private
+    def set_status
+      self.status ||= 'open'
+    end
 
 end

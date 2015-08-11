@@ -36,7 +36,7 @@ class ListingsController < ApplicationController
 
   # POST /listings
   def create
-    @listing = current_user.listings.new(listing_params.merge(status: 'open'))
+    @listing = current_user.listings.new(listing_params)
 
     if @listing.save
       redirect_to @listing, notice: 'Listing was successfully created.'
@@ -69,7 +69,7 @@ class ListingsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def listing_params
       params.require(:listing)
-        .permit(:title, :description, :price, :model, :year, :length, :kind, :zip_code, photos: [])
+        .permit(:title, :description, :price, :model, :year, :length, :kind, :city, :state, photos: [])
         .merge(price: params[:listing][:price].gsub(",", ""))
 
     end

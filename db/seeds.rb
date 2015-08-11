@@ -22,7 +22,6 @@ user_ids = User.pluck(:id)
     model: ["Flying Cloud", "International", "Safari", "Classic"].sample,
     year: (1936..Date.today.year).to_a.sample,
     length: (15..35).to_a.sample,
-    zip_code: FFaker::AddressUS.zip_code.to_i,
     state: FFaker::AddressUS.state,
     status: 'open',
     flagged: false,

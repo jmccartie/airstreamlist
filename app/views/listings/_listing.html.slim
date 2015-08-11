@@ -21,3 +21,5 @@
                 p
                   = link_to "View More", listing
               small.text-muted Posted #{ local_time_ago(listing.created_at) } by #{listing.user.name} (#{ listing.kind })
+
+              .pull-right= listing.address
