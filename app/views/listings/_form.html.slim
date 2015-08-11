@@ -32,6 +32,9 @@
                 = f.label :state
                 = f.select :state, options_for_select(states), { prompt: true }, class: 'form-control'
           .form-group
+            = f.label :phone
+            = f.telephone_field :phone, class: 'form-control'
+          .form-group
             = f.label :kind, "Listing Type"
             = f.select :kind, options_for_select({"Private Party" => "private", "Dealer" => "dealer"}), { prompt: true }, class: 'form-control'
 

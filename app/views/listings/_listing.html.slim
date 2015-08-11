@@ -17,9 +17,12 @@
           .row
             .col-md-12
               p= simple_format truncate(listing.description, length: 400, separator: ". ")
-              - unless params[:action] == 'show'
-                p
-                  = link_to "View More", listing
-              small.text-muted Posted #{ local_time_ago(listing.created_at) } by #{listing.user.name} (#{ listing.kind })
 
-              .pull-right= listing.address
+              small.text-muted Posted #{ local_time_ago(listing.created_at) } by #{listing.user.name}
+
+              hr
+              dl.details
+                dt Location
+                dd= listing.address
+                dt Phone
+                dd= listing.phone || "None given"

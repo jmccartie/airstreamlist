@@ -11,6 +11,6 @@
               h4= link_to listing.title, listing
           .row
             .col-md-12
-              small.text-muted Posted #{ local_time_ago(listing.created_at) } by #{listing.user.name} (#{ listing.kind })
+              small.text-muted Posted #{ local_time_ago(listing.created_at) } by #{listing.user.name}
               p.pull-right
-                = link_to "View More", listing
+                = listing.address

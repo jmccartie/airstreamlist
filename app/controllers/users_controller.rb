@@ -24,20 +24,18 @@ class UsersController < ApplicationController
   end
 
   def update
-    if current_user.update(listing_params)
-      redirect_to root_url, notice: 'Listing was successfully updated.'
+    if current_user.update(user_params)
+      redirect_to root_url, notice: 'Your profile was successfully updated.'
     else
+      @user = current_user
       render :edit
     end
   end
 
   private
-    def set_user
-      @user = User.find(params[:id])
-    end
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :phone, :password_confirmation)
     end
 
 end

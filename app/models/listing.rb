@@ -12,6 +12,7 @@ class Listing < ActiveRecord::Base
 
   after_validation :geocode, :reverse_geocode
   before_validation :set_status
+  after_initialize :set_phone
 
   def to_param
     "#{id}-#{title.parameterize}"
@@ -28,6 +29,10 @@ class Listing < ActiveRecord::Base
   private
     def set_status
       self.status ||= 'open'
+    end
+
+    def set_phone
+      self.phone ||= self.user.try(:phone)
     end
 
 end
