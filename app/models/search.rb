@@ -2,25 +2,17 @@ class Search
 
   attr_accessor :params
 
-  # q
-  # model
-  # length
-  # distance
-  # year
-  # kind
-  # sort_field
   def initialize(params)
     @params = params
   end
 
-  # TODO
   def results
     query = ""
     query << "title ILIKE '%#{params[:q]}%'"
-    query << " AND model ILIKE '%#{params[:model]}%'" if params[:model].present?
-    query << " AND length BETWEEN #{params[:length_start]} AND #{params[:length_end]}" if params[:length_start].present? and params[:length_end].present?
-    query << " AND year BETWEEN #{params[:year_start]} AND #{params[:year_end]}" if params[:year_start].present? and params[:year_end].present?
-    query << " AND kind = '#{params[:kind]}'" if params[:kind].present?
+    query << " #{operator} model ILIKE '%#{params[:model]}%'" if params[:model].present?
+    query << " #{operator} length BETWEEN #{params[:length_start]} AND #{params[:length_end]}" if params[:length_start].present? and params[:length_end].present?
+    query << " #{operator} year BETWEEN #{params[:year_start]} AND #{params[:year_end]}" if params[:year_start].present? and params[:year_end].present?
+    query << " #{operator} kind = '#{params[:kind]}'" if params[:kind].present?
 
     ActiveRecord::Base::sanitize(query)
     items = Listing.where(query)
@@ -30,6 +22,10 @@ class Search
       end
     end
     items
+  end
+
+  def operator
+    params[:fuzzy] == true ? 'OR' : 'AND'
   end
 
 

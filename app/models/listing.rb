@@ -19,7 +19,14 @@ class Listing < ActiveRecord::Base
   end
 
   def related
-    Search.new({q: self.title}).results
+    Search.new({
+      q: self.title,
+      length_start: self.length-2,
+      length_end: self.length+2,
+      year_start: self.year-1,
+      year_end: self.year+1,
+      fuzzy: true
+    }).results.where("id != #{self.id}")
   end
 
   def address

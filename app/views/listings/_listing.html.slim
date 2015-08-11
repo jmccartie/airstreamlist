@@ -27,4 +27,4 @@
                 dt Location
                 dd= listing.address
                 dt Phone
-                dd= listing.phone || "None given"
+                dd= listing.phone.present? ? "<a href='tel:#{listing.phone}'>#{listing.phone}</a>".html_safe : "None given"
