@@ -39,6 +39,7 @@ class ListingsController < ApplicationController
     @listing = current_user.listings.new(listing_params)
 
     if @listing.save
+      ListingMailer.created(@listing.id).deliver_later
       redirect_to @listing, notice: 'Listing was successfully created.'
     else
       render :new
