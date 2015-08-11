@@ -1,0 +1,17 @@
+h1 Saved Searches
+
+table.table
+  thead
+    tr
+      td Name
+      td Query
+      td Created At
+      td Actions
+  tbody
+    - @saved_searches.each do |search|
+      tr
+        td= search.title
+        td= link_to search.pretty_query, search.query
+        td= local_time(search.created_at)
+        td= link_to "Delete", saved_search_path(search), method: :delete, data: { confirm: "Are you sure?" }
+

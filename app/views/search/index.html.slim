@@ -1,9 +1,12 @@
-- if params[:q].present?
-  .row
-    .col-md-12
-      h1 Results for "#{params[:q]}"
 .row
   .col-md-9
+    - if params[:q].present?
+      h1
+        | Results for "#{params[:q]}"
+        .pull-right
+          = link_to saved_searches_path(saved_search: {query: request.fullpath}), method: :create, class: 'btn btn-default' do
+            i.fa.fa-search-plus
+            span Save Search
     - if @search.results.any?
       = render @search.results
     - else
@@ -50,3 +53,4 @@
                 = select_tag "sort_direction", options_for_select({"Low to high" => "ASC", "High to low" => "DESC"}, selected: params[:sort_direction]), include_blank: true, class: 'form-control'
 
           = submit_tag "Search", class: 'btn btn-primary'
+

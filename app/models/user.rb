@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
 
-  has_many :listings
+  has_many :listings, dependent: :destroy
+  has_many :saved_searches, dependent: :destroy
 
   validates_presence_of :password, :on => :create
   validates_presence_of :email, :name

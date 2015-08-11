@@ -1,6 +1,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  resources :saved_searches
   get 'search' => 'search#index', as: 'search'
 
   mount Attachinary::Engine => "/attachinary"
